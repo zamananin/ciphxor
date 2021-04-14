@@ -12,10 +12,10 @@ public class Ciphering {
             int a = input.read();
             int i = 0;
             while (a > 0){
-                output.write(a ^ key.bytes[i]);
+                output.write(a ^ key.getBytes()[i]);
 
                 a = input.read();
-                if (i == key.length - 1) i = 0;
+                if (i == key.getLength() - 1) i = 0;
                 else i++;
             }
         }

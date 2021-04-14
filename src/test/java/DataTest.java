@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DataTest {
     @Test
-    public void data() {
+    public void data() throws Exception {
         assertEquals(new Key("BAB"), new Data().onlyOneKey("BAB", null));
         assertEquals(new Key("BAB"), new Data().onlyOneKey(null, "BAB"));
 

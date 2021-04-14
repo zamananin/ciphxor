@@ -2,8 +2,16 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Key {
-    final int[] bytes;
-    final int length;
+    private int[] bytes;
+    private int length;
+
+    public int[] getBytes() {
+        return bytes;
+    }
+
+    public int getLength() {
+        return length;
+    }
 
     public Key(String s){
         int l = s.length();

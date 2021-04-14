@@ -13,7 +13,7 @@ public class CipheringXor {
     @Option(name = "-o")
     String outputName;
 
-    private Data launch(String[] args) {
+    private Data launch(String[] args) throws Exception {
         CmdLineParser parser = new CmdLineParser(this);
         try {
             parser.parseArgument(args);
@@ -26,13 +26,20 @@ public class CipheringXor {
     }
 
     public static void main(String[] args) {
-        Data data = new CipheringXor().launch(args);
+        Data data = null;
         try {
-            Ciphering.ciphering(data.inputName, data.outputName, data.key);
+            data = new CipheringXor().launch(args);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            System.exit(1);
         }
-        System.out.println("Recorded in " + data.outputName);
+        try {
+            Ciphering.ciphering(data.getInputName(), data.getOutputName(), data.getKey());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
+        System.out.println("Recorded in " + data.getOutputName());
 
 //        int i = 0;
 //        String massage = "Use correct form [-c key] [-d key] inputName.txt [-o outputName.txt]";
